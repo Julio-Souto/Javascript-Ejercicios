@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            margin: auto;
+        }
+        .frame{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+        .image{
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 1em;
+        }
+        .health{
+            border: 2px solid gray;
+            border-radius: 2em;
+            padding: 1em;
+            width: 80%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
         #myProgress {
             width: 100%;
             background-color: grey;
@@ -38,16 +65,20 @@
     <p id="divisor"></p>
     <p id="comunes"></p>
     <p id="primo"></p>
-    <p id="seconds"></p>
-    <p id="clicks"></p>
+    
 
-    <div id="myProgress">
-        <div id="myBar"></div>
+    <div class="frame">
+        <p id="seconds"></p>
+        <p id="clicks"></p>
+        <div class="health">
+            <img src="http://placekitten.com/200/300" alt="Image" class="image" id="image">
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+            <p id="hp"></p>
+            <button onclick="stop()" name="stop" id="stop">Stop</button>
+        </div>
     </div>
-
-    <p id="hp"></p>
-
-    <button onclick="stop()" name="stop" id="stop">Stop</button>
 
     <script src="script.js">
 

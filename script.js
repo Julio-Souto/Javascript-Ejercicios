@@ -24,15 +24,9 @@ document.getElementById("suma").innerHTML = 5+3
 
 // if(n1>n2 && n1>n3)
 //     document.getElementById("mayor3").innerHTML = n1 + " mayor que "+ n2 +" y "+ n3
-// else if(n1>n3 && n1>n2)
-//     document.getElementById("mayor3").innerHTML = n1 + " mayor que "+ n2 +" y "+ n3
 // else if(n2>n1 && n2>n3)
 //     document.getElementById("mayor3").innerHTML = n2 + " mayor que "+ n1 +" y "+ n3
-// else if(n2>n3 && n2>n1)
-//     document.getElementById("mayor3").innerHTML = n2 + " mayor que "+ n1 +" y "+ n3
 // else if(n3>n2 && n3>n1)
-//     document.getElementById("mayor3").innerHTML = n3 + " mayor que "+ n2 +" y "+ n1
-// else if(n3>n1 && n3>n2)
 //     document.getElementById("mayor3").innerHTML = n3 + " mayor que "+ n2 +" y "+ n1
 // else
 //     document.getElementById("mayor3").innerHTML = "Los numeros son iguales"
@@ -143,6 +137,7 @@ function progressBar() {
     if (width == 0) {
       width=100;
       hp=maxhp;
+      changeImage()
     //   clearInterval(id)
     } else {
       elem.style.width = width + "%";
@@ -161,4 +156,12 @@ function stop(){
         secondsId = setInterval(incrementSeconds,1000);
         document.getElementById("stop").textContent = "Stop"
     }
+}
+
+function changeImage(){
+    let link = ""+document.getElementById("image").src;
+    let string = link.split("/")
+    let res1 = Math.floor(Math.random()*1000);
+    let res2 = Math.floor(Math.random()*1000);
+    document.getElementById("image").src = string[0]+"//"+string[2]+"/"+res1+"/"+res2
 }
