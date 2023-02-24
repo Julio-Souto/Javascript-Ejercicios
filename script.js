@@ -105,14 +105,14 @@ document.getElementById("suma").innerHTML = 5+3
 // document.getElementById("vocal-o").innerHTML = "Vocal o: "+counto
 // document.getElementById("vocal-u").innerHTML = "Vocal u: "+countu
 
-let clicks = 0
-let seconds = 0
+let clicks = 0;
+let seconds = 0;
 
 function incrementSeconds(){
     seconds++;
     clicks++;
-    width--;
-    hp--;
+    width-=widthvalue;
+    hp=hp-clickvalue;
     document.getElementById("seconds").innerHTML = seconds;
     document.getElementById("clicks").innerHTML = clicks;
 }
@@ -120,28 +120,48 @@ function incrementSeconds(){
 function incrementClicks(){
     clicks++;
     document.getElementById("clicks").innerHTML = clicks;
-    width--;
-    hp--;
+    width-=widthvalue;
+    hp=hp-clickvalue;
 }
 
 let elem = document.getElementById("myBar");
 let width = 100;
 let maxhp = width;
+let clickvalue = 1;
+let widthvalue = 1;
 let hp = maxhp;
 let barId = setInterval(progressBar, 100);
     
-let secondsId = setInterval(incrementSeconds,1000)
-document.body.addEventListener("click",incrementClicks)
+let secondsId = setInterval(incrementSeconds,1000);
+document.body.addEventListener("click",incrementClicks);
+
+let sounds = ["angry-cartoon-kitty-meow.wav","big-wild-cat-long-purr.wav","domestic-cat-hungry-meow.wav",
+"little-cat-attention-meow.wav","little-cat-pain-meow.wav","sweet-kitty-meow.wav"];
+let audio = new Audio("Audio/"+sounds[getRndInteger(0,6)]);
+audio.play();
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
 
 function progressBar() {
-    if (width == 0) {
+    if (width <= 0) {
       width=100;
+      maxhp=maxhp*1.20;
+      clickvalue=clickvalue*1.20;
       hp=maxhp;
       changeImage()
+      audio = new Audio("Audio/"+sounds[getRndInteger(0,6)]);
+      audio.play();
     //   clearInterval(id)
     } else {
       elem.style.width = width + "%";
-      document.getElementById("hp").innerHTML = hp+"/"+maxhp
+      let textHp=(Math.round(hp*100)/100)+"/"+(Math.round(maxhp*100)/100) + " - "+(Math.round(clickvalue*100)/100);
+      if(maxhp>1000000)
+        textHp=(Math.round(hp*100)/100000000).toFixed(2)+"m/"+(Math.round(maxhp*100)/100000000).toFixed(2) + "m - "+(Math.round(clickvalue*100)/100000000).toFixed(2)+"m";
+      else if(maxhp>1000000000000)
+        textHp=(Math.round(hp*100)/100000000000000).toFixed(2)+"b/"+(Math.round(maxhp*100)/100000000000000).toFixed(2) + "b - "+(Math.round(clickvalue*100)/100000000000000).toFixed(2)+"b";
+      document.getElementById("hp").innerHTML = textHp;
     }
 }
 
@@ -149,19 +169,40 @@ function stop(){
     if(document.getElementById("stop").textContent=="Stop"){
         clearInterval(barId);
         clearInterval(secondsId);
-        document.getElementById("stop").textContent = "Resume"
+        document.getElementById("stop").textContent = "Resume";
     }
     else{
         barId = setInterval(progressBar, 100);
         secondsId = setInterval(incrementSeconds,1000);
-        document.getElementById("stop").textContent = "Stop"
+        document.getElementById("stop").textContent = "Stop";
     }
 }
 
 function changeImage(){
     let link = ""+document.getElementById("image").src;
-    let string = link.split("/")
-    let res1 = Math.floor(Math.random()*1000);
+    let string = link.split("/");
+    let res1 = Math.floor(Math.random()*10+2)*100;
     let res2 = Math.floor(Math.random()*1000);
-    document.getElementById("image").src = string[0]+"//"+string[2]+"/"+res1+"/"+res2
+    document.getElementById("image").src = string[0]+"//"+string[2]+"/"+res1+"/"+(res1-100);
+}
+
+let firsclick=false;
+function first(){
+    if(!firsclick){
+        clickvalue=clickvalue*1.20;
+        widthvalue*=1.20;
+        firsclick=true;
+    }
+}
+let secondclick=false;
+function second(){
+    if(!secondclick){
+        clickvalue=clickvalue*1.50;
+        widthvalue*=1.50;
+        secondclick=true;
+    }
+}
+function third(){
+    clickvalue=clickvalue*2;
+    widthvalue*=2;
 }

@@ -6,7 +6,19 @@
     <title>Document</title>
     <style>
         body{
-            margin: auto;
+            margin: 0;
+            background-color: hsl(217, 72%, 8%);
+            color: aliceblue;
+            height: 100vh;
+        }
+        p{
+            margin:0;
+            margin-bottom: 1em;
+            margin-left: 1em;
+        }
+        .container{
+            height: 100%;
+            background-color: hsla(0, 0%, 100%, 0.178);
         }
         .frame{
             display: flex;
@@ -42,41 +54,57 @@
             height: 2em;
             background-color: green;
         }
+        .upgrades{
+            display: grid;
+            gap: 2em;
+            height: 5em;
+            grid-template-columns: 5em 5em 5em;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-
-    <p id="hello-world"></p>
-    <p id="suma"></p>
-    <p id="prompt"></p>
-    <p id="suma-prompt"></p>
-    <p id="mayor-prompt"></p>
-    <p id="mayor3"></p>
-    <p id="par"></p>
-    <p id="count-a"></p>
-    <p id="count-vocal"></p>
-    <p id="vocal-a"></p>
-    <p id="vocal-e"></p>
-    <p id="vocal-i"></p>
-    <p id="vocal-o"></p>
-    <p id="vocal-u"></p>
-    <p id="vocal-u"></p>
-    <p id="divisible"></p>
-    <p id="divisor"></p>
-    <p id="comunes"></p>
-    <p id="primo"></p>
+    <div class="container">
     
-
-    <div class="frame">
-        <p id="seconds"></p>
-        <p id="clicks"></p>
-        <div class="health">
-            <img src="http://placekitten.com/200/300" alt="Image" class="image" id="image">
-            <div id="myProgress">
-                <div id="myBar"></div>
+        <p id="hello-world"></p>
+        <p id="suma"></p>
+        <p id="prompt"></p>
+        <p id="suma-prompt"></p>
+        <p id="mayor-prompt"></p>
+        <p id="mayor3"></p>
+        <p id="par"></p>
+        <p id="count-a"></p>
+        <p id="count-vocal"></p>
+        <p id="vocal-a"></p>
+        <p id="vocal-e"></p>
+        <p id="vocal-i"></p>
+        <p id="vocal-o"></p>
+        <p id="vocal-u"></p>
+        <p id="vocal-u"></p>
+        <p id="divisible"></p>
+        <p id="divisor"></p>
+        <p id="comunes"></p>
+        <p id="primo"></p>
+    
+    
+        <div class="frame">
+            <p id="seconds"></p>
+            <p id="clicks"></p>
+            <div class="health">
+                <img src="http://placekitten.com/200/300" alt="Image" class="image" id="image">
+                <div id="myProgress">
+                    <div id="myBar"></div>
+                </div>
+                <p id="hp"></p>
+                <button onclick="stop()" name="stop" id="stop">Stop</button>
             </div>
-            <p id="hp"></p>
-            <button onclick="stop()" name="stop" id="stop">Stop</button>
+        </div>
+
+        <div class="upgrades">
+            <button id="first" onclick="first()">First</button>
+            <button id="second" onclick="second()">Second</button>
+            <button id="third" onclick="third()">Third</button>
         </div>
     </div>
 
