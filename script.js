@@ -52,8 +52,8 @@ document.getElementById("suma").innerHTML = 5+3
 //     string=string.substring(0,string.length-1)
 // document.getElementById("divisible").innerHTML = string
 
-// let divisor=""
-// let comunes=""
+// let divisor="1 "
+// let comunes="1 "
 // let primo=0
 // for (i = 2; i <= numeroPar / 2; i++) {
 //     if (numeroPar % i == 0) {
@@ -68,7 +68,12 @@ document.getElementById("suma").innerHTML = 5+3
 // else
 //     document.getElementById("primo").innerHTML = "El numero no es primo"
 
-// document.getElementById("divisor").innerHTML = divisor
+// document.getElementById("divisor").innerHTML = divisor+" "+numeroPar
+
+// if(numero2>numeroPar&&numero2%numeroPar==0)
+//     comunes=comunes+" "+numeroPar
+// else if(numeroPar==numero2)
+//     comunes=divisor+" "+numeroPar
 // document.getElementById("comunes").innerHTML = comunes
 // let frase = prompt("frase","esta es una frase")
 // let count = 0
@@ -130,6 +135,8 @@ let maxhp = width;
 let clickvalue = 1;
 let widthvalue = 1;
 let hp = maxhp;
+let currency = 0;
+document.getElementById("currency").innerHTML = currency;
 let barId = setInterval(progressBar, 100);
     
 let secondsId = setInterval(incrementSeconds,1000);
@@ -147,9 +154,11 @@ function getRndInteger(min, max) {
 function progressBar() {
     if (width <= 0) {
       width=100;
+      currency+=Math.floor(Math.round(maxhp/30));
       maxhp=maxhp*1.20;
       clickvalue=clickvalue*1.20;
       hp=maxhp;
+      document.getElementById("currency").innerHTML = currency;
       changeImage()
       audio = new Audio("Audio/"+sounds[getRndInteger(0,6)]);
       audio.play();
@@ -188,21 +197,70 @@ function changeImage(){
 
 let firsclick=false;
 function first(){
-    if(!firsclick){
+    if(!firsclick&&currency>=20){
         clickvalue=clickvalue*1.20;
         widthvalue*=1.20;
         firsclick=true;
+        currency-=20;
+        document.getElementById("currency").innerHTML = currency;
+        document.getElementById("first").style.backgroundColor = "gray";
+        document.getElementById("first").style.color = "aliceblue";
+        document.getElementById("first").style.borderStyle = "none";
     }
 }
 let secondclick=false;
 function second(){
-    if(!secondclick){
+    if(!secondclick&&currency>=50){
         clickvalue=clickvalue*1.50;
         widthvalue*=1.50;
         secondclick=true;
+        currency-=50
+        document.getElementById("currency").innerHTML = currency;
+        document.getElementById("second").style.backgroundColor = "gray";
+        document.getElementById("second").style.color = "aliceblue";
+        document.getElementById("second").style.borderStyle = "none";
     }
 }
 function third(){
     clickvalue=clickvalue*2;
     widthvalue*=2;
+}
+let fourthclick=false;
+function fourth(){
+    if(!fourthclick&&currency>=500){
+        clickvalue=clickvalue*2.50;
+        widthvalue*=2.50;
+        fourthclick=true;
+        currency-=500;
+        document.getElementById("currency").innerHTML = currency;
+        document.getElementById("fourth").style.backgroundColor = "gray";
+        document.getElementById("fourth").style.color = "aliceblue";
+        document.getElementById("fourth").style.borderStyle = "none";
+    }
+}
+let fifthclick=false;
+function fifth(){
+    if(!fifthclick&&currency>=5000){
+        clickvalue=clickvalue*3;
+        widthvalue*=3;
+        fifthclick=true;
+        currency-=5000;
+        document.getElementById("currency").innerHTML = currency;
+        document.getElementById("fifth").style.backgroundColor = "gray";
+        document.getElementById("fifth").style.color = "aliceblue";
+        document.getElementById("fifth").style.borderStyle = "none";
+    }
+}
+let sixthclick=false;
+function sixth(){
+    if(!sixthclick&&currency>=15000){
+        clickvalue=clickvalue*3.50;
+        widthvalue*=3.50;
+        sixthclick=true;
+        currency-=15000;
+        document.getElementById("currency").innerHTML = currency;
+        document.getElementById("sixth").style.backgroundColor = "gray";
+        document.getElementById("sixth").style.color = "aliceblue";
+        document.getElementById("sixth").style.borderStyle = "none";
+    }
 }

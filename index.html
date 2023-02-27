@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <title>Document</title>
     <style>
         body{
+            display: block;
             margin: 0;
             background-color: hsl(217, 72%, 8%);
             color: aliceblue;
@@ -38,9 +40,9 @@
             border-radius: 2em;
             padding: 1em;
             width: 80%;
-            height: 300px;
+            height: 400px;
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
             flex-direction: column;
         }
@@ -59,8 +61,15 @@
             gap: 2em;
             height: 5em;
             grid-template-columns: 5em 5em 5em;
+            grid-template-rows: 1em 2em 2em;
             justify-content: center;
             align-items: center;
+        }
+        .currency{
+            margin: 0;
+            margin-top: 1em;
+            grid-column: 1 / span 3;
+            text-align: center;
         }
     </style>
 </head>
@@ -102,9 +111,13 @@
         </div>
 
         <div class="upgrades">
+            <p id="currency" class="currency"></p>
             <button id="first" onclick="first()">First</button>
             <button id="second" onclick="second()">Second</button>
             <button id="third" onclick="third()">Third</button>
+            <button id="fourth" onclick="fourth()">Fourth</button>
+            <button id="fifth" onclick="fifth()">Fifth</button>
+            <button id="sixth" onclick="sixth()">Sixth</button>
         </div>
     </div>
 
