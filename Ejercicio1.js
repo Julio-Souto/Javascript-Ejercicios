@@ -59,11 +59,11 @@ function cerrar(){
 const list = document.getElementById("add-remove-class")
 
 document.getElementById("addClass").addEventListener("click",() => {
-  list.classList.add("addlist");
+  list.classList.add("fa","fa-blind","fa-3x");
 })
 
 document.getElementById("removeClass").addEventListener("click",() => {
-  list.classList.remove("addlist");
+  list.classList.remove("fa","fa-blind","fa-3x");
 })
 
 document.querySelector("h1").addEventListener("click",() => {
@@ -83,7 +83,7 @@ document.getElementById("miCaja").addEventListener("click", () => {
 })
 
 document.getElementById("isNaN").addEventListener("input", () => {
-  if(!isNaN(document.getElementById("isNaN").value))
+  if(!isNaN(document.getElementById("isNaN").value) && !document.getElementById("isNaN").value=="")
     document.getElementById("pColor").style.color = "red"
   else
     document.getElementById("pColor").style.color = "black"

@@ -110,21 +110,21 @@ document.getElementById("suma").innerHTML = 5 + 3
 // document.getElementById("vocal-o").innerHTML = "Vocal o: "+counto
 // document.getElementById("vocal-u").innerHTML = "Vocal u: "+countu
 
-let form = document.getElementById("form-number");
-form.addEventListener('input', restar)
+// let form = document.getElementById("form-number");
+// form.addEventListener('input', restar)
 
-function restar() {
-  let result = 0;
-  if (!isNaN(form.number1.value) || !isNaN(form.number2.value)) {
-    let num1 = Number(form.number1.value);
-    let num2 = Number(form.number2.value);
-    if (num1 >= num2)
-      result = num1 - num2
-    else
-      result = num2 - num1
-    form.result.value = result;
-  }
-}
+// function restar() {
+//   let result = 0;
+//   if (!isNaN(form.number1.value) || !isNaN(form.number2.value)) {
+//     let num1 = Number(form.number1.value);
+//     let num2 = Number(form.number2.value);
+//     if (num1 >= num2)
+//       result = num1 - num2
+//     else
+//       result = num2 - num1
+//     form.result.value = result;
+//   }
+// }
 
 let clicks = 0;
 let seconds = 0;
