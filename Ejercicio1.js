@@ -82,8 +82,12 @@ document.getElementById("miCaja").addEventListener("click", () => {
   alert(document.getElementById("miCaja").value)
 })
 
+function checkValidNum(num){
+  return !isNaN(num) && num.trim().length
+}
+
 document.getElementById("isNaN").addEventListener("input", () => {
-  if(!isNaN(document.getElementById("isNaN").value) && !document.getElementById("isNaN").value=="")
+  if(checkValidNum(document.getElementById("isNaN").value))
     document.getElementById("pColor").style.color = "red"
   else
     document.getElementById("pColor").style.color = "black"

@@ -1,18 +1,22 @@
 let clicks = 0;
 let seconds = 0;
+let domsec = document.getElementById("seconds");
+let domclick = document.getElementById("clicks");
+domsec.innerHTML = 0;
+domclick.innerHTML = 0;
 
 function incrementSeconds() {
   seconds++;
   clicks++;
   width -= widthvalue;
   hp = hp - clickvalue;
-  document.getElementById("seconds").innerHTML = seconds;
-  document.getElementById("clicks").innerHTML = clicks;
+  domsec.innerHTML = seconds;
+  domclick.innerHTML = clicks;
 }
 
 function incrementClicks() {
   clicks++;
-  document.getElementById("clicks").innerHTML = clicks;
+  domclick.innerHTML = clicks;
   width -= widthvalue;
   hp = hp - clickvalue;
 }
@@ -24,7 +28,8 @@ let clickvalue = 1;
 let widthvalue = 1;
 let hp = maxhp;
 let currency = 0;
-document.getElementById("currency").innerHTML = "Currency: "+currency;
+let domcurrency=document.getElementById("currency");
+domcurrency.innerHTML = "Currency: "+currency;
 let barId = setInterval(progressBar, 100);
 
 let secondsId = setInterval(incrementSeconds, 1000);
@@ -35,6 +40,7 @@ let sounds = ["angry-cartoon-kitty-meow.wav", "domestic-cat-hungry-meow.wav",
 let audio = new Audio("Audio/" + sounds[getRndInteger(0, 5)]);
 audio.volume = 0.8;
 audio.play();
+changeImage();
 document.getElementById("volume").innerHTML = "Volume: "+ Math.floor(audio.volume*100)
 
 document.getElementById("volume-control").addEventListener("input", (e) => {
@@ -46,6 +52,8 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+let domHp=document.getElementById("hp");
+domHp.innerHTML="HP: 0/0 - ClickValue: 0"
 function progressBar() {
   if (width <= 0) {
     width = 100;
@@ -53,7 +61,7 @@ function progressBar() {
     maxhp = maxhp * 1.20;
     clickvalue = clickvalue * 1.20;
     hp = maxhp;
-    document.getElementById("currency").innerHTML = "Currency: "+currency;
+    domcurrency.innerHTML = "Currency: "+currency;
     changeImage()
     audio = new Audio("Audio/" + sounds[getRndInteger(0, 5)]);
     audio.play();
@@ -65,7 +73,7 @@ function progressBar() {
       textHp = "HP: "+(Math.round(hp * 100) / 100000000).toFixed(2) + "m/" + (Math.round(maxhp * 100) / 100000000).toFixed(2) + "m - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100000000).toFixed(2) + "m";
     else if (maxhp > 1000000000000)
       textHp = "HP: "+(Math.round(hp * 100) / 100000000000000).toFixed(2) + "b/" + (Math.round(maxhp * 100) / 100000000000000).toFixed(2) + "b - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100000000000000).toFixed(2) + "b";
-    document.getElementById("hp").innerHTML = textHp;
+    domHp.innerHTML = textHp;
   }
 }
 
@@ -97,7 +105,7 @@ function first() {
     widthvalue *= 1.20;
     firsclick = true;
     currency -= 20;
-    document.getElementById("currency").innerHTML = "Currency: "+currency;
+    domcurrency.innerHTML = "Currency: "+currency;
     document.getElementById("first").style.backgroundColor = "gray";
     document.getElementById("first").style.color = "aliceblue";
     document.getElementById("first").style.borderStyle = "none";
@@ -110,7 +118,7 @@ function second() {
     widthvalue *= 1.50;
     secondclick = true;
     currency -= 50
-    document.getElementById("currency").innerHTML = "Currency: "+currency;
+    domcurrency.innerHTML = "Currency: "+currency;
     document.getElementById("second").style.backgroundColor = "gray";
     document.getElementById("second").style.color = "aliceblue";
     document.getElementById("second").style.borderStyle = "none";
@@ -127,7 +135,7 @@ function fourth() {
     widthvalue *= 2.50;
     fourthclick = true;
     currency -= 500;
-    document.getElementById("currency").innerHTML = "Currency: "+currency;
+    domcurrency.innerHTML = "Currency: "+currency;
     document.getElementById("fourth").style.backgroundColor = "gray";
     document.getElementById("fourth").style.color = "aliceblue";
     document.getElementById("fourth").style.borderStyle = "none";
@@ -140,7 +148,7 @@ function fifth() {
     widthvalue *= 3;
     fifthclick = true;
     currency -= 5000;
-    document.getElementById("currency").innerHTML = "Currency: "+currency;
+    domcurrency.innerHTML = "Currency: "+currency;
     document.getElementById("fifth").style.backgroundColor = "gray";
     document.getElementById("fifth").style.color = "aliceblue";
     document.getElementById("fifth").style.borderStyle = "none";
@@ -153,7 +161,7 @@ function sixth() {
     widthvalue *= 3.50;
     sixthclick = true;
     currency -= 15000;
-    document.getElementById("currency").innerHTML = "Currency: "+currency;
+    domcurrency.innerHTML = "Currency: "+currency;
     document.getElementById("sixth").style.backgroundColor = "gray";
     document.getElementById("sixth").style.color = "aliceblue";
     document.getElementById("sixth").style.borderStyle = "none";
