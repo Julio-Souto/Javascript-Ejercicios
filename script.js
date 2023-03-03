@@ -38,13 +38,15 @@ document.body.addEventListener("click", incrementClicks);
 let sounds = ["angry-cartoon-kitty-meow.wav", "domestic-cat-hungry-meow.wav",
   "little-cat-attention-meow.wav", "little-cat-pain-meow.wav", "sweet-kitty-meow.wav"];
 let audio = new Audio("Audio/" + sounds[getRndInteger(0, 5)]);
-audio.volume = 0.8;
+let volume = 0.8;
+audio.volume = volume;
 audio.play();
 changeImage();
 document.getElementById("volume").innerHTML = "Volume: "+ Math.floor(audio.volume*100)
 
 document.getElementById("volume-control").addEventListener("input", (e) => {
-  audio.volume = e.currentTarget.value/100
+  volume = e.currentTarget.value/100
+  audio.volume = volume
   document.getElementById("volume").innerHTML = "Volume: "+ Math.floor(audio.volume*100)
 })
 
@@ -64,6 +66,7 @@ function progressBar() {
     domcurrency.innerHTML = "Currency: "+currency;
     changeImage()
     audio = new Audio("Audio/" + sounds[getRndInteger(0, 5)]);
+    audio.volume = volume
     audio.play();
     //   clearInterval(id)
   } else {
