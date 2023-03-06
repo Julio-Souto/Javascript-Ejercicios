@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="css/coloris.min.css"/>
     <title>Document</title>
     <style>
         body{
@@ -47,6 +48,12 @@
             align-items: center;
             flex-direction: column;
         }
+        .health:hover{
+            cursor: grab;
+        }
+        .health:active{
+            cursor: grabbing;
+        }
         #myProgress {
             width: 100%;
             background-color: grey;
@@ -62,7 +69,7 @@
             gap: 2em;
             height: 5em;
             grid-template-columns: 5em 5em 5em;
-            grid-template-rows: 1em 2em 2em;
+            grid-template-rows: 1em 2em 2em 2em;
             justify-content: center;
             align-items: center;
         }
@@ -88,9 +95,10 @@
         <div class="frame">
             <p id="seconds"></p>
             <p id="clicks"></p>
+            <input type="text" data-coloris>
             <p id="volume"></p>
             <input type="range" id="volume-control" min="0" max="100" value="80">
-            <div class="health">
+            <div class="health" id="health">
                 <img src="http://placekitten.com/200/300" alt="Image" class="image" id="image">
                 <div id="myProgress">
                     <div id="myBar"></div>
@@ -108,6 +116,9 @@
             <button id="fourth" onclick="fourth()">Fourth</button>
             <button id="fifth" onclick="fifth()">Fifth</button>
             <button id="sixth" onclick="sixth()">Sixth</button>
+            <button id="seven" onclick="seven()">Seven</button>
+            <button id="eight" onclick="eight()">Eight</button>
+            <button id="nine" onclick="nine()">Nine</button>
         </div>
     </div>
     <div class="footer">
@@ -118,5 +129,6 @@
     <script src="script.js">
 
     </script>
+    <script src="coloris.min.js"></script>
 </body>
 </html>

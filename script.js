@@ -33,7 +33,7 @@ domcurrency.innerHTML = "Currency: "+currency;
 let barId = setInterval(progressBar, 100);
 
 let secondsId = setInterval(incrementSeconds, 1000);
-document.body.addEventListener("click", incrementClicks);
+document.getElementById("health").addEventListener("click", incrementClicks);
 
 let sounds = ["angry-cartoon-kitty-meow.wav", "domestic-cat-hungry-meow.wav",
   "little-cat-attention-meow.wav", "little-cat-pain-meow.wav", "sweet-kitty-meow.wav"];
@@ -71,11 +71,11 @@ function progressBar() {
     //   clearInterval(id)
   } else {
     elem.style.width = width + "%";
-    let textHp = "HP: "+(Math.round(hp * 100) / 100) + "/" + (Math.round(maxhp * 100) / 100) + " - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100);
+    let textHp = "Stamina: "+(Math.round(hp * 100) / 100) + "/" + (Math.round(maxhp * 100) / 100) + " - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100);
     if (maxhp > 1000000)
-      textHp = "HP: "+(Math.round(hp * 100) / 100000000).toFixed(2) + "m/" + (Math.round(maxhp * 100) / 100000000).toFixed(2) + "m - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100000000).toFixed(2) + "m";
+      textHp = "Stamina: "+(Math.round(hp * 100) / 100000000).toFixed(2) + "m/" + (Math.round(maxhp * 100) / 100000000).toFixed(2) + "m - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100000000).toFixed(2) + "m";
     else if (maxhp > 1000000000000)
-      textHp = "HP: "+(Math.round(hp * 100) / 100000000000000).toFixed(2) + "b/" + (Math.round(maxhp * 100) / 100000000000000).toFixed(2) + "b - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100000000000000).toFixed(2) + "b";
+      textHp = "Stamina: "+(Math.round(hp * 100) / 100000000000000).toFixed(2) + "b/" + (Math.round(maxhp * 100) / 100000000000000).toFixed(2) + "b - " + "ClickValue: "+(Math.round(clickvalue * 100) / 100000000000000).toFixed(2) + "b";
     domHp.innerHTML = textHp;
   }
 }
@@ -127,9 +127,18 @@ function second() {
     document.getElementById("second").style.borderStyle = "none";
   }
 }
+let thirdclick = false;
 function third() {
-  clickvalue = clickvalue * 2;
-  widthvalue *= 2;
+  if (!thirdclick && currency >= 100) {
+    clickvalue = clickvalue * 2;
+    widthvalue *= 2;
+    thirdclick = true;
+    currency -= 100
+    domcurrency.innerHTML = "Currency: "+currency;
+    document.getElementById("third").style.backgroundColor = "gray";
+    document.getElementById("third").style.color = "aliceblue";
+    document.getElementById("third").style.borderStyle = "none";
+  }
 }
 let fourthclick = false;
 function fourth() {
@@ -170,3 +179,46 @@ function sixth() {
     document.getElementById("sixth").style.borderStyle = "none";
   }
 }
+let seventhclick = false;
+function seven() {
+  if (!seventhclick && currency >= 30000) {
+    clickvalue = clickvalue * 4;
+    widthvalue *= 4;
+    seventhclick = true;
+    currency -= 30000;
+    domcurrency.innerHTML = "Currency: "+currency;
+    document.getElementById("seven").style.backgroundColor = "gray";
+    document.getElementById("seven").style.color = "aliceblue";
+    document.getElementById("seven").style.borderStyle = "none";
+  }
+}
+let eigthclick = false;
+function eight() {
+  if (!eigthclick && currency >= 50000) {
+    clickvalue = clickvalue * 4.50;
+    widthvalue *= 4.50;
+    eigthclick = true;
+    currency -= 15000;
+    domcurrency.innerHTML = "Currency: "+currency;
+    document.getElementById("eight").style.backgroundColor = "gray";
+    document.getElementById("eight").style.color = "aliceblue";
+    document.getElementById("eight").style.borderStyle = "none";
+  }
+}
+let ninthclick = false;
+function nine() {
+  if (!ninthclick && currency >= 1) {
+    clickvalue = clickvalue * 5;
+    widthvalue *= 5;
+    ninthclick = false;
+    currency -= 1;
+    domcurrency.innerHTML = "Currency: "+currency;
+    document.getElementById("nine").style.backgroundColor = "gray";
+    document.getElementById("nine").style.color = "aliceblue";
+    document.getElementById("nine").style.borderStyle = "none";
+  }
+}
+
+document.addEventListener('coloris:pick', event => {
+  document.body.style.backgroundColor = event.detail.color
+});
