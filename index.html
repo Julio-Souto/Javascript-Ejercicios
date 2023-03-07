@@ -87,6 +87,16 @@
         .footer a{
             margin-right: 1em;
         }
+        .settings{
+            position: fixed;
+            top: 1em;
+            right: 0;
+            border: 2px solid gray;
+            border-radius: 1em;
+            padding: 1em;
+            display: grid;
+            gap: 1em;
+        }
     </style>
 </head>
 <body>
@@ -95,7 +105,6 @@
         <div class="frame">
             <p id="seconds"></p>
             <p id="clicks"></p>
-            <input type="text" data-coloris>
             <p id="volume"></p>
             <input type="range" id="volume-control" min="0" max="100" value="80">
             <div class="health" id="health">
@@ -104,7 +113,6 @@
                     <div id="myBar"></div>
                 </div>
                 <p id="hp"></p>
-                <button onclick="stop()" name="stop" id="stop">Stop</button>
             </div>
         </div>
 
@@ -125,6 +133,11 @@
         <a href="EjercicosPrincipio.html">Ejercicios Principio</a>
         <a href="Ejercicio1.html">Ejercicio 1</a>
         <a href="Ejercicio2.html">Ejercicio 2</a>
+    </div>
+    <div class="settings">
+        <button id="nine" onclick="nine()">Nine</button>
+        <input type="text" data-coloris>
+        <button onclick="stop()" name="stop" id="stop">Stop</button>
     </div>
     <script src="script.js">
 
